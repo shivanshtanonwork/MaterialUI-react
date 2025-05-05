@@ -14,6 +14,7 @@ export default function SearchBox({ updateInfo }) {
         try {
             let response = await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric`)
             let jsonResponse = await response.json()
+            setError(false)
             let result = {
                 city: city,
                 temp: jsonResponse.main.temp,
@@ -45,7 +46,6 @@ export default function SearchBox({ updateInfo }) {
         } catch (err) {
             setError(true)
         }
-
     }
 
     return (
